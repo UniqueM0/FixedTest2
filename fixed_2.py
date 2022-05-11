@@ -38,8 +38,27 @@ set average divided equals length of grades
 print average grade
 print percentage of grade (calculate the percent of grades that are above average)
 close file
-
-
-
-
 """
+
+
+def calculate_percent_above_average(grades, average):
+    count = 0
+    for grade in grades:
+        count += 1
+    return (count * 100) / len(grades)
+
+def main():
+    file = open('Final.txt')
+    grades = []
+    for line in file:
+        grades.append(int(line.strip()))
+    print("Number of grades: ", len(grades))
+    average = 0
+    for grade in grades:
+        average += grade
+    average /= len(grades)
+    print("Average grade: ", average)
+    print("Percentage of grades above average: {:.2f}%".format(calculate_percent_above_average(grades, average)))
+    file.close
+
+main()
